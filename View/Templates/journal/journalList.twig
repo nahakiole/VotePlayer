@@ -1,0 +1,36 @@
+{% extends 'index.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 "><a class="btn btn-primary"
+                                       href="{{ offset }}/journal/new"><i
+                            class="fa fa-pencil-square-o"></i> Create a new
+                    journal</a><br></div>
+        </div>
+        <section  class="row tiles">
+
+
+            {% for journal in journals %}
+                <section  class="col-md-4 col-sm-6 clearfix">
+                    <h3>
+                        <a href="/journal/{{ journal.id }}">{{ journal.title }}</a>
+                    </h3>
+
+                    <p>{{ journal.content | nl2br }}</p>
+                </section >
+            {% endfor %}
+        </section >
+    </div>
+
+{% endblock %}
+{% block header %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>List Journal</h1>
+        </div>
+    </div>
+
+{% endblock %}

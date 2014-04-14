@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    padding-top: 40px;
+    font-family: "open-sans", "open sans", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    background: #3498db;
+}
+
+h1 {
+    color: #fff;
+    font-size: 80px;
+}
+
+.navbar-inverse {
+    background: #21618b;
+    border: none;
+    border-radius: 0;
+}
+
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>li>a:hover {
+    color: #fff;
+    background-color: #184665;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a i {
+    font-size: 34px;
+    margin-top: -3px;
+    margin-bottom: -5px;
+    margin-right: 5px;
+}
+
+.navbar-collapse {
+    padding: 0;
+}
+
+.btn, input, .form-control {
+    border-radius: 0;
+}
+
+.top10 {
+    margin-top: 10px;
+}
+
+.top30 {
+    margin-top: 30px;
+}
+
+.top7 {
+    margin-top: 7px;
+}
+
+.fa-6x {
+    font-size: 6em;
+}
+
+.fa-7x {
+    font-size: 7em;
+}
+
+.top30 {
+    margin-top: 30px;
+}
+
+.top15 {
+    margin-top: 15px;
+}
+
+.padding15 {
+    padding: 15px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 0;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.user-logged-in {
+    font-size: 30px;
+    color: #fff;
+    margin-top: 60px;
+}
+
+.sidebar {
+    background: #fff;
+}
+
+.sidebar h2 {
+    background: #3f3f3f;
+    color: #fff;
+    margin: -15px -15px 15px;
+    padding: 15px;
+}
+
+.playlist {
+    background: #3f3f3f;
+    color: #fff;
+}
