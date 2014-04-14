@@ -20,7 +20,7 @@ class Demo extends Controller
 
 
     /**
-     * @param $request \Model\Entity\Request
+     * @param $request \Fredy\Model\Entity\Request
      * @return \Fredy\View\Response
      */
     function indexAction($request)
@@ -29,10 +29,11 @@ class Demo extends Controller
         //echo $languageContainer->getString('password_too_short');
         //echo $languageContainer->getStringWithAttributes('integer_min_max',[ 10, 11]);
 
+
         $response->setTwigVariables(
             [
                 'title' => 'Demo',
-                'navigation' => Navigation::getNavigation('home')
+                'navigation' => Navigation::getNavigation($request->matches[0])
             ]
 
         );
