@@ -32,35 +32,7 @@ class Demo extends Controller
         $response->setTwigVariables(
             [
                 'title' => 'Demo',
-                'navigation' => [
-                    [
-                        'text' => '<i class="fa fa-home"></i> Home',
-                        'url' => '/',
-
-                        'active' => 'active',
-                        'active_class' => 'active'
-                    ],
-                    [
-                        'text' => '<i class="fa fa-align-justify"></i> Playlist',
-                        'url' => '/Playlist',
-                        'active_class' => 'active'
-                    ],
-                    [
-                        'text' => '<i class="fa fa-users"></i> Users',
-                        'url' => '/Users',
-                        'active_class' => 'active'
-                    ],
-                    [
-                        'text' => '<i class="fa fa-music"></i> Add Music',
-                        'url' => '/AddMusic',
-                        'active_class' => 'active'
-                    ],
-                    [
-                        'text' => '<i class="fa fa-cogs"></i> Settings',
-                        'url' => '/Settings',
-                        'active_class' => 'active'
-                    ]
-                ]
+                'navigation' => Navigation::getNavigation('home')
             ]
 
         );

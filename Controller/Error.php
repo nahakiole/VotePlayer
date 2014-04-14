@@ -22,7 +22,8 @@ class Error extends Controller
 
         $response->setTwigVariables([
             'title' => 'Diese Seite wurde nicht gefunden.',
-            'message' => 'Die Seite unter <a href="' . $request->SERVER['REQUEST_URI'] . '"> ' . $request->SERVER['REQUEST_URI'] . '</a> wurde nicht gefunden. Möchtest du zurück auf die <a href="/">Startseite</a>?'
+            'message' => 'Die Seite unter <a href="' . $request->SERVER['REQUEST_URI'] . '"> ' . $request->SERVER['REQUEST_URI'] . '</a> wurde nicht gefunden. Möchtest du zurück auf die <a href="/">Startseite</a>?',
+            'navigation' => Navigation::getNavigation()
         ]);
 
         $response->addHeaderField('HTTP/1.0', ' 404 Not Found');
@@ -40,7 +41,8 @@ class Error extends Controller
 
         $response->setTwigVariables([
             'title' => !empty($this->errorMessage) ? $this->errorMessage : 'Internal Server Error',
-            'message' => 'Da ging etwas daneben'
+            'message' => 'Da ging etwas daneben',
+            'navigation' => Navigation::getNavigation()
         ]);
 
         $response->addHeaderField('HTTP/1.0', ' 500 Internal Server Error');
@@ -58,7 +60,8 @@ class Error extends Controller
 
         $response->setTwigVariables([
             'title' => !empty($this->errorMessage) ? $this->errorMessage : 'No access to this file.',
-            'message' => 'You have no access to this file.'
+            'message' => 'You have no access to this file.',
+            'navigation' => Navigation::getNavigation()
         ]);
 
         $response->addHeaderField('HTTP/1.0', '403 Forbidden');
