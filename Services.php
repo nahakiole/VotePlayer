@@ -14,18 +14,6 @@ $services['error'] = function () {
     return new \Controller\Error();
 };
 
-$services['journal'] = function ($c) {
-    return new \Controller\JournalController($c['PDO'], $c['languageLoader']);
-};
-
-$services['test'] = function ($c) {
-    return new \Controller\Test();
-};
-
-$services['oliver'] = function ($c) {
-    return new \Controller\Oliver();
-};
-
 $services['languageLoader'] = function ($c) {
     return new \Fredy\LanguageLoader($c['language.default'], $c['language.array'], $c['language.directory'], $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 };
