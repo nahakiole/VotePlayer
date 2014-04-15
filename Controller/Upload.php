@@ -21,7 +21,6 @@ class Upload extends Controller
      */
     function indexAction($request)
     {
-        $request->SESSION['test'] = 'Hello';
         $response = new HTMLResponse('upload.twig');
         $response->setTwigVariables([
             'navigation' => Navigation::getNavigation($request->matches[0])
