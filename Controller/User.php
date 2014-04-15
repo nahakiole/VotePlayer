@@ -29,4 +29,19 @@ class User extends Controller
         );
         return $response;
     }
+
+    /**
+     * @param $request \Fredy\Model\Entity\Request
+     * @return \Fredy\View\Response
+     */
+    function loginAction($request)
+    {
+        $response = new HTMLResponse('login.twig');
+        $response->setTwigVariables([
+                'navigation' => Navigation::getNavigation($request->matches[0]),
+                'text' => $request->SESSION['test']
+            ]
+        );
+        return $response;
+    }
 }

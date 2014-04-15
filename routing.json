@@ -22,6 +22,11 @@
             "match": ":^/Users:"
         },
         {
+            "action": "loginAction",
+            "controller": "user",
+            "match": ":^/Login:"
+        },
+        {
             "action": "indexAction",
             "controller": "settings",
             "match": ":^/Settings:"
