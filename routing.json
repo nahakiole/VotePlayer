@@ -22,6 +22,11 @@
             "match": ":^/Users:"
         },
         {
+            "action": "indexAction",
+            "controller": "settings",
+            "match": ":^/Settings:"
+        },
+        {
             "action": "notFound",
             "controller": "error",
             "match": ":^/Error/404:"

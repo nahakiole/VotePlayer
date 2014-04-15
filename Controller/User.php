@@ -23,7 +23,8 @@ class User extends Controller
     {
         $response = new HTMLResponse('users.twig');
         $response->setTwigVariables([
-                'navigation' => Navigation::getNavigation($request->matches[0])
+                'navigation' => Navigation::getNavigation($request->matches[0]),
+                'text' => $request->SESSION['test']
             ]
         );
         return $response;

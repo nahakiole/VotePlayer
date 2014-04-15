@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Robin
  * Date: 15.04.14
- * Time: 12:19
+ * Time: 12:43
  */
 
 namespace Controller;
@@ -12,7 +12,7 @@ namespace Controller;
 use Fredy\Controller\Controller;
 use Fredy\View\HTMLResponse;
 
-class Upload extends Controller
+class Settings extends Controller
 {
 
     /**
@@ -21,11 +21,11 @@ class Upload extends Controller
      */
     function indexAction($request)
     {
-        $request->SESSION['test'] = 'Hello';
-        $response = new HTMLResponse('upload.twig');
+        $response = new HTMLResponse('settings.twig');
         $response->setTwigVariables([
-            'navigation' => Navigation::getNavigation($request->matches[0])
-        ]
+                'navigation' => Navigation::getNavigation($request->matches[0]),
+                'text' => $request->SESSION['test']
+            ]
         );
         return $response;
     }

@@ -1,0 +1,149 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <div class="container top30">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="settings padding15">
+                    <h2>Settings</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#home" data-toggle="tab">General</a>
+                        </li>
+                        <li>
+                            <a href="#profile" data-toggle="tab">Music</a>
+                        </li>
+                        <li>
+                            <a href="#messages" data-toggle="tab">Upload</a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Text Input</label>
+                                        <div class="col-md-4">
+                                            <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
+                                            <span class="help-block">help</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="textinput">Text Input</label>
+                                        <div class="col-md-4">
+                                            <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
+                                            <span class="help-block">help</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Multiple Checkboxes -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="checkboxes">Multiple Checkboxes</label>
+                                        <div class="col-md-4">
+                                            <div class="checkbox">
+                                                <label for="checkboxes-0">
+                                                    <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
+                                                    Option one
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="checkboxes-1">
+                                                    <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
+                                                    Option two
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Multiple Radios -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="radios">Multiple Radios</label>
+                                        <div class="col-md-4">
+                                            <div class="radio">
+                                                <label for="radios-0">
+                                                    <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                                                    Option one
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label for="radios-1">
+                                                    <input type="radio" name="radios" id="radios-1" value="2">
+                                                    Option two
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label for="radios-2">
+                                                    <input type="radio" name="radios" id="radios-2" value="3">
+                                                    Option two
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Select Basic -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
+                                        <div class="col-md-4">
+                                            <select id="selectbasic" name="selectbasic" class="form-control">
+                                                <option value="1">Option one</option>
+                                                <option value="2">Option two</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Button -->
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                                        <div class="col-md-4">
+                                            <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+                        </div>
+                        <div class="tab-pane" id="profile">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit.quibusdam
+                            similique sint tempora temporibus velit. Id magni
+                            nobis quae.
+                        </div>
+                        <div class="tab-pane" id="messages">
+                            Ab at consectetur cumque, deleniti, ducimus
+                            esse est impedit itaque minus quasi quibusdam
+                            similique sint tempora temporibus velit. Id magni
+                            nobis quae.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar padding15">
+                    <h2>Installation</h2>
+
+                    <p>A small river named Duden flows by their place and
+                        supplies
+                        it with the necessary regelialia. It is a
+                        paradisematic country, in which roasted parts of
+                        sentences
+                        fly into your mouth. </p>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

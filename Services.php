@@ -7,7 +7,7 @@ $services['PDO'] = function ($c) {
 };
 
 $services['demo'] = function () {
-    return new \Controller\Demo();
+    return new \Controller\Overview();
 };
 
 $services['error'] = function () {
@@ -20,6 +20,10 @@ $services['upload'] = function () {
 
 $services['user'] = function () {
     return new \Controller\User();
+};
+
+$services['settings'] = function () {
+    return new \Controller\Settings();
 };
 
 $services['languageLoader'] = function ($c) {
