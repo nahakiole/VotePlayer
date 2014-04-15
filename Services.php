@@ -6,12 +6,20 @@ $services['PDO'] = function ($c) {
         , $c['db.password']);
 };
 
-$services['demo'] = function ($c) {
-    return new \Controller\Demo($c['PDO'], $c['languageLoader']);
+$services['demo'] = function () {
+    return new \Controller\Demo();
 };
 
 $services['error'] = function () {
     return new \Controller\Error();
+};
+
+$services['upload'] = function () {
+    return new \Controller\Upload();
+};
+
+$services['user'] = function () {
+    return new \Controller\User();
 };
 
 $services['languageLoader'] = function ($c) {

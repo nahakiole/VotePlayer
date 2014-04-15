@@ -9,7 +9,17 @@
         {
             "action": "indexAction",
             "controller": "demo",
-            "match": ":^/(Test/(?P<id>[0-9]+))?$:"
+            "match": ":^/(Playlist)?$:"
+        },
+        {
+            "action": "indexAction",
+            "controller": "upload",
+            "match": ":^/AddMusic:"
+        },
+        {
+            "action": "indexAction",
+            "controller": "user",
+            "match": ":^/Users:"
         },
         {
             "action": "notFound",
