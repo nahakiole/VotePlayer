@@ -173,8 +173,13 @@ h1, .h1, h2, .h2, h3, .h3 {
     display: inline-block;
 }
 
+.song-information {
+    padding-top: 5px;
+}
+
 .voting {
     text-align: center;
+    padding-right: 10px;
 }
 
 .voting i {
