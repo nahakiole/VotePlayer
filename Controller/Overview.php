@@ -8,7 +8,7 @@ use Fredy\Controller\Controller;
 use  Fredy\LanguageLoader;
 use  Fredy\View\HTMLResponse;
 
-class Demo extends Controller
+class Overview extends Controller
 {
 
 
