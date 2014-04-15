@@ -24,7 +24,6 @@ class Overview extends Controller
         //echo $languageContainer->getString('password_too_short');
         //echo $languageContainer->getStringWithAttributes('integer_min_max',[ 10, 11]);
 
-
         $response->setTwigVariables(
             [
                 'title' => 'Demo',
