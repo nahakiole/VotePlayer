@@ -20,7 +20,7 @@ class Demo extends Controller
      */
     function indexAction($request)
     {
-        $response = new HTMLResponse('demo.twig');
+        $response = new HTMLResponse('overview.twig');
         //echo $languageContainer->getString('password_too_short');
         //echo $languageContainer->getStringWithAttributes('integer_min_max',[ 10, 11]);
 

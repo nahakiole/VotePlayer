@@ -21,7 +21,7 @@ class User extends Controller
      */
     function indexAction($request)
     {
-        $response = new HTMLResponse('demo.twig');
+        $response = new HTMLResponse('users.twig');
         $response->setTwigVariables([
                 'navigation' => Navigation::getNavigation($request->matches[0])
             ]
