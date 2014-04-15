@@ -20,6 +20,7 @@ h1 {
     font-size: 80px;
 }
 
+
 .navbar-inverse {
     background: #21618b;
     border: none;
@@ -292,5 +293,16 @@ opacity:0.9;
     .omb_login .omb_forgotPwd {
         text-align: right;
         margin-top:10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    .user-logged-in {
+        margin-top: 0;
     }
 }
