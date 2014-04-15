@@ -1,4 +1,5 @@
 <?php
+$services = [];
 $services['PDO'] = function ($c) {
     return new \PDO(
         'mysql:host=' . $c['db.host'] . ';dbname=' . $c['db.dbname'] . ';'
