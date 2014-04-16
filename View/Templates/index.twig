@@ -20,7 +20,10 @@
 
     <script src="{{ offset }}/View/Assets/js/vendor/bootstrap.min.js"></script>
 
+    <script src="{{ offset }}/View/Assets/js/mediaelement/mediaelement-and-player.js"></script>
+    <link rel="stylesheet" href="{{ offset }}/View/Assets/css/voteplayer-theme.css" />
     <script src="{{ offset }}/View/Assets/js/main.js"></script>
+    <script src="{{ offset }}/View/Assets/js/player.js"></script>
 </head>
 <body>
 
@@ -55,21 +58,16 @@
 </div>
 <div class="container">
     <div class="player">
-        <div class="col-md-2 player-options">
-            <i class="fa fa-step-backward"></i>
-            <i class="fa fa-play"></i>
-            <i class="fa fa-step-forward"></i>
-            <span class="time">
-            00:24/02:23
-                </span>
-        </div>
-        <div class="col-md-10">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                     aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    <span class="sr-only">60% Complete</span>
-                </div>
-            </div>
+        {#<div class="col-md-2 player-options">#}
+            {#<i class="fa fa-step-backward"></i>#}
+            {#<i class="fa fa-play"></i>#}
+            {#<i class="fa fa-step-forward"></i>#}
+            {#<span class="time">#}
+            {#00:24/02:23#}
+                {#</span>#}
+        {#</div>#}
+        <div class="col-md-12 nopadding">
+            <audio width="100%" src="{{ offset }}/Music/Aqualung - Easier To Lie.mp3"></audio>
         </div>
         <div class="clearfix"></div>
     </div>
