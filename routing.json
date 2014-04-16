@@ -1,35 +1,39 @@
 {
     "routes": [
         {
-            "action": "subdomainAction",
-            "controller": "demo",
-            "match": ":(?P<subdomain>[a-zA-Z0-9]+)\\.fredyframework:",
-            "fullDomainMatch": true
-        },
-        {
             "action": "indexAction",
             "controller": "demo",
-            "match": ":^/(Playlist)?$:"
+            "match": ":^/(Playlist|Home)$:"
         },
         {
             "action": "indexAction",
             "controller": "upload",
-            "match": ":^/AddMusic:"
+            "match": ":^/AddMusic$:"
+        },
+        {
+            "action": "uploadAction",
+            "controller": "upload",
+            "match": ":^/AddMusic/UploadHandler$:"
         },
         {
             "action": "indexAction",
             "controller": "user",
-            "match": ":^/Users:"
+            "match": ":^/Users$:"
+        },
+        {
+            "action": "editAction",
+            "controller": "user",
+            "match": ":^/Users/(Edit|Add)(/)?(?P<userid>[0-9]+)?$:"
         },
         {
             "action": "loginAction",
             "controller": "user",
-            "match": ":^/Login:"
+            "match": ":^/Login$:"
         },
         {
             "action": "indexAction",
             "controller": "settings",
-            "match": ":^/Settings:"
+            "match": ":^/Settings$:"
         },
         {
             "action": "notFound",

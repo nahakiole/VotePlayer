@@ -11,6 +11,7 @@ namespace Controller;
 
 use Fredy\Controller\Controller;
 use Fredy\View\HTMLResponse;
+use Fredy\View\JSONResponse;
 
 class Upload extends Controller
 {
@@ -28,6 +29,30 @@ class Upload extends Controller
                 'navigation' => $navigation->getNavigation($request->matches[0])
             ]
         );
+        return $response;
+    }
+
+    /**
+     * @param $request \Fredy\Model\Entity\Request
+     * @return \Fredy\View\Response
+     */
+    function uploadAction($request)
+    {
+
+        $response = new JSONResponse('uploadHandler.twig');
+        $response->setTwigVariables([
+            'json' =>
+            [
+                'files' => [
+                    [
+                        'name' => 'Test.jpg',
+                        'url' => 'Test.jpg',
+                        'size' => '10'
+                    ]
+                ]
+            ]
+
+        ]);
         return $response;
     }
 }

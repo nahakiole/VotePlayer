@@ -8,21 +8,50 @@
 
                 <div class="users padding15">
                     <h2>Users</h2>
-                    {{ text }}
+                    <a class="btn btn-primary" href="{{ offset }}/Users/Add">Add User</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Robin</td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Marc</td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Abbühl</td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
                 </div>
             </div>
-            <div class="col-md-4 top30" >
+            <div class="col-md-4 top30">
                 <div class="sidebar padding15">
-                    <h2>Installation</h2>
+                    <h2>Edit and add users</h2>
 
-                    <p>A small river named Duden flows by their place and
-                        supplies
-                        it with the necessary regelialia. It is a
-                        paradisematic country, in which roasted parts of
-                        sentences
-                        fly into your mouth. </p>
+                    <p>Here you can edit, add or remove users. </p>
 
 
                 </div>

@@ -19,7 +19,7 @@ class Navigation {
 
     public function getNavigation($url = ''){
         foreach ($this->navigation['navigation'] as &$link) {
-            if (preg_match(':^'.$url.'$:', $link['url'])){
+            if (preg_match(':^'.$link['url'].':', $url)){
                 $link['active'] = 'active';
             }
         }

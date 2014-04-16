@@ -2,7 +2,7 @@
     "navigation": [
         {
             "text": "<i class='fa fa-home'></i> Home",
-            "url": "/",
+            "url": "/Home",
             "active_class": "active"
         },
         {
