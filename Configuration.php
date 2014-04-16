@@ -11,4 +11,4 @@ $configuration['language.array'] = [
 ];
 
 define("ROOTPATH", dirname(__FILE__) . '/');
-define("OFFSETPATH", '');
+define("OFFSETPATH", '/VotePlayer');
