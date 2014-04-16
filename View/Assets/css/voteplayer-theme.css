@@ -363,14 +363,14 @@
 .mejs-controls .mejs-time-rail .mejs-time-float {
     position: absolute;
     display: none;
-    background: #eee;
+    background: #3498db;
     width: 36px;
     height: 17px;
-    border: solid 1px #333;
-    top: -26px;
+    top: -16px;
     margin-left: -18px;
     text-align: center;
-    color: #111;
+    color: #FFF;
+    z-index: 100;
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-float-current {
@@ -387,8 +387,8 @@
     width: 0;
     height: 0;
     line-height: 0;
-    border: solid 5px #eee;
-    border-color: #eee transparent transparent transparent;
+    border: solid 5px #3498db;
+    border-color: #3498db transparent transparent transparent;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
