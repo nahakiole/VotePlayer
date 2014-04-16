@@ -11,40 +11,18 @@ namespace Controller;
 
 class Navigation {
 
-    private static  $navigation = [
-        [
-            'text' => '<i class="fa fa-home"></i> Home',
-            'url' => '/',
-            'active_class' => 'active'
-        ],
-        [
-            'text' => '<i class="fa fa-align-justify"></i> Playlist',
-            'url' => '/Playlist',
-            'active_class' => 'active'
-        ],
-        [
-            'text' => '<i class="fa fa-users"></i> Users',
-            'url' => '/Users',
-            'active_class' => 'active'
-        ],
-        [
-            'text' => '<i class="fa fa-music"></i> Add Music',
-            'url' => '/AddMusic',
-            'active_class' => 'active'
-        ],
-        [
-            'text' => '<i class="fa fa-cogs"></i> Settings',
-            'url' => '/Settings',
-            'active_class' => 'active'
-        ]
-    ];
+    private $navigation = [];
 
-    public static function  getNavigation($url = ''){
-        foreach (self::$navigation as &$link) {
+    public function __construct($navigationFile){
+        $this->navigation = json_decode( file_get_contents(ROOTPATH.$navigationFile), true);
+    }
+
+    public function getNavigation($url = ''){
+        foreach ($this->navigation['navigation'] as &$link) {
             if (preg_match(':^'.$url.'$:', $link['url'])){
                 $link['active'] = 'active';
             }
         }
-        return self::$navigation;
+        return $this->navigation['navigation'];
     }
 } 

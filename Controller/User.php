@@ -22,8 +22,9 @@ class User extends Controller
     function indexAction($request)
     {
         $response = new HTMLResponse('users.twig');
+        $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
-                'navigation' => Navigation::getNavigation($request->matches[0])
+                'navigation' => $navigation->getNavigation($request->matches[0])
             ]
         );
         return $response;
@@ -36,8 +37,9 @@ class User extends Controller
     function loginAction($request)
     {
         $response = new HTMLResponse('login.twig');
+        $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
-                'navigation' => Navigation::getNavigation($request->matches[0])
+                'navigation' => $navigation->getNavigation($request->matches[0])
             ]
         );
         return $response;

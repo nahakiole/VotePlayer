@@ -23,11 +23,11 @@ class Overview extends Controller
         $response = new HTMLResponse('overview.twig');
         //echo $languageContainer->getString('password_too_short');
         //echo $languageContainer->getStringWithAttributes('integer_min_max',[ 10, 11]);
-
+        $navigation = new Navigation('navigation.json');
         $response->setTwigVariables(
             [
                 'title' => 'Demo',
-                'navigation' => Navigation::getNavigation($request->matches[0])
+                'navigation' => $navigation->getNavigation($request->matches[0])
             ]
 
         );

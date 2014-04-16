@@ -22,8 +22,9 @@ class Settings extends Controller
     function indexAction($request)
     {
         $response = new HTMLResponse('settings.twig');
+        $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
-                'navigation' => Navigation::getNavigation($request->matches[0])
+                'navigation' => $navigation->getNavigation($request->matches[0])
             ]
         );
         return $response;
