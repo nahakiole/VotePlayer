@@ -50,6 +50,7 @@ h1 {
 
 .navbar-collapse {
     padding: 0;
+    border: none;
 }
 
 .btn, input, .form-control {
