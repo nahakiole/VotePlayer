@@ -32,7 +32,6 @@
     };
     tmpl.cache = {};
     tmpl.load = function (id) {
-        console.log(id);
         return document.getElementById(id).innerHTML;
     };
     tmpl.regexp = /([\s'\\])(?!(?:[^{]|\{(?!%))*%\})|(?:\{%(=|#)([\s\S]+?)%\})|(\{%)|(%\})/g;

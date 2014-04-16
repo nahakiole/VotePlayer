@@ -332,3 +332,9 @@ div.tab-content {
 .settings .nav-tabs > li > a:hover {
     color: #555;
 }
+
+.title {
+    background: #3f3f3f;
+    color: #fff;
+    padding-bottom: 5px;
+}
