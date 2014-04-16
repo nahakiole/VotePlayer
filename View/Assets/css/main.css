@@ -20,7 +20,6 @@ h1 {
     font-size: 80px;
 }
 
-
 .navbar-inverse {
     background: #21618b;
     border: none;
@@ -196,6 +195,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     position: relative;
     overflow: hidden;
 }
+
 .fileinput-button input {
     position: absolute;
     top: 0;
@@ -213,17 +213,16 @@ ul.nav.nav-tabs {
     padding: 0 15px;
     margin: 0 -15px;
 }
+
 div.tab-content {
     margin: 0 -15px -15px -15px;
     padding: 20px;
     background: #fff;
 }
 
-.settings {
-
-    background: #efefef;
+.settings, .settings ul.nav.nav-tabs {
+    background: #3f3f3f;
 }
-
 
 /*
     Note: It is best to use a less version of this file ( see http://css2less.cc
@@ -243,17 +242,26 @@ div.tab-content {
 }
 
 .omb_login .omb_socialButtons a {
-    color: white; // In yourUse @body-bg
-opacity:0.9;
+    color: white;
+/ / In yourUse @body-bg opacity : 0.9;
 }
+
 .omb_login .omb_socialButtons a:hover {
     color: white;
-    opacity:1;
+    opacity: 1;
 }
-.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
-.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
-.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
 
+.omb_login .omb_socialButtons .omb_btn-facebook {
+    background: #3b5998;
+}
+
+.omb_login .omb_socialButtons .omb_btn-twitter {
+    background: #00aced;
+}
+
+.omb_login .omb_socialButtons .omb_btn-google {
+    background: #c32f10;
+}
 
 .omb_login .omb_loginOr {
     position: relative;
@@ -264,12 +272,14 @@ opacity:0.9;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
+
 .omb_login .omb_loginOr .omb_hrOr {
     background-color: #cdcdcd;
     height: 1px;
     margin-top: 0px !important;
     margin-bottom: 0px !important;
 }
+
 .omb_login .omb_loginOr .omb_spanOr {
     display: block;
     position: absolute;
@@ -284,18 +294,17 @@ opacity:0.9;
 .omb_login .omb_loginForm .input-group.i {
     width: 2em;
 }
-.omb_login .omb_loginForm  .help-block {
+
+.omb_login .omb_loginForm .help-block {
     color: red;
 }
-
 
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
-        margin-top:10px;
+        margin-top: 10px;
     }
 }
-
 
 @media (max-width: 768px) {
     h1 {
@@ -305,4 +314,21 @@ opacity:0.9;
     .user-logged-in {
         margin-top: 0;
     }
+}
+
+.settings h2 {
+    color: #fff;
+}
+
+.settings .nav-tabs > li > a {
+    color: #fff;
+    border-radius: 0;
+}
+
+.settings .nav-tabs > li.active > a, .settings .nav-tabs > li.active > a:hover, .settings .nav-tabs > li.active > a:focus {
+    color: #555;
+}
+
+.settings .nav-tabs > li > a:hover {
+    color: #555;
 }
