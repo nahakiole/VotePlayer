@@ -39,20 +39,11 @@ class Upload extends Controller
     function uploadAction($request)
     {
 
-        $response = new JSONResponse('uploadHandler.twig');
-        $response->setTwigVariables([
-            'json' =>
-            [
-                'files' => [
-                    [
-                        'name' => 'Test.jpg',
-                        'url' => 'Test.jpg',
-                        'size' => '10'
-                    ]
-                ]
-            ]
-
+        $handler = new UploadHandler([
+            'upload_dir' => ROOTPATH.'/Music/',
+            'upload_url' => OFFSETPATH.'/Music/',
         ]);
-        return $response;
+        die();
+
     }
 }

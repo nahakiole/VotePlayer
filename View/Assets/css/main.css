@@ -121,7 +121,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     background: #fff;
 }
 
-.progress {
+.player .progress {
     margin: 19px 0;
     border-radius: 0;
     overflow: visible;
@@ -129,7 +129,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     height: 5px;
 }
 
-.progress-bar {
+.player .progress-bar {
     float: left;
     width: 0;
     height: 5px;
@@ -145,7 +145,7 @@ h1, .h1, h2, .h2, h3, .h3 {
     position: relative;
 }
 
-.progress-bar:after {
+.player  .progress-bar:after {
     content: '';
     background: #1F1F1F;
     height: 7px;

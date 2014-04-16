@@ -6,9 +6,6 @@
    {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-upload fade">
         <td>
-            <span class="preview"></span>
-        </td>
-        <td>
             <p class="name">{%=file.name%}</p>
             <strong class="error text-danger"></strong>
         </td>
@@ -19,13 +16,13 @@
         <td>
             {% if (!i && !o.options.autoUpload) { %}
                 <button class="btn btn-primary start" disabled>
-                    <i class="glyphicon glyphicon-upload"></i>
+                    <i class="fa fa-upload"></i>
                     <span>Start</span>
                 </button>
             {% } %}
             {% if (!i) { %}
                 <button class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <i class="fa fa-times"></i>
                     <span>Cancel</span>
                 </button>
             {% } %}
@@ -38,17 +35,11 @@
         {% raw %}
     {% for (var i=0, file; file=o.files[i]; i++) { %}
     <tr class="template-download fade">
-        <td>
-            <span class="preview">
-                {% if (file.thumbnailUrl) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
-                {% } %}
-            </span>
-        </td>
+
         <td>
             <p class="name">
                 {% if (file.url) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                    <span>{%=file.name%}</span>
                 {% } else { %}
                     <span>{%=file.name%}</span>
                 {% } %}
@@ -154,8 +145,6 @@
                     <script src="{{ offset }}/View/Assets/js/vendor/jquery.fileupload-process.js"></script>
                     <!-- The File Upload image preview & resize plugin -->
                     <script src="{{ offset }}/View/Assets/js/vendor/jquery.fileupload-image.js"></script>
-                    <!-- The File Upload audio preview plugin -->
-                    <script src="{{ offset }}/View/Assets/js/vendor/jquery.fileupload-audio.js"></script>
                     <!-- The File Upload video preview plugin -->
                     <script src="{{ offset }}/View/Assets/js/vendor/jquery.fileupload-video.js"></script>
                     <!-- The File Upload validation plugin -->
