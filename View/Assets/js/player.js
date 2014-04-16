@@ -10,7 +10,7 @@ jQuery(function($){
 
         mediaElement.addEventListener('ended', function(e) {
 
-            mediaElement.src = 'http://www.youtube.com/watch?v=nOEw9iiopwI';
+            mediaElement.src = 'Music/George Street Shuffle.mp3';
             mediaElement.play();
         }, false);
     }});
