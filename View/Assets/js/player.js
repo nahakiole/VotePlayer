@@ -2,20 +2,57 @@
  * Created by Robin on 16.04.14.
  */
 
-jQuery(function($){
-    $('audio').mediaelementplayer({success: function(mediaElement, originalNode) {
+jQuery(function ($) {
 
-        // call the play method
-        mediaElement.play();
-
-        mediaElement.addEventListener('ended', function(e) {
-
-            mediaElement.src = 'Music/George Street Shuffle.mp3';
-            mediaElement.play();
-        }, false);
-    }});
 
     // add event listener
+    var addNextButton = function (me, music) {
 
+
+        var $inner = $(music).parents('.mejs-audio')
+        var next = '<div class="mejs-button mejs-next"><button type="button" title="Next" aria-label="Next"></button></div>';
+        var prev = '<div class="mejs-button mejs-prev"><button type="button" title="Previous" aria-label="Previous"></button></div>';
+        $inner.find('.mejs-play').after(next);
+        $inner.find('.mejs-play').before(prev);
+        $inner.find('.mejs-next').click(function () {
+            playNextSong(me);
+        });
+        $inner.find('.mejs-prev').click(function () {
+            playNextSong(me);
+        });
+
+    };
+
+    var playNextSong = function (mediaElement) {
+        console.log('Next Song');
+        console.log(mediaElement.src);
+
+        $.getJSON( "Music/JSON", function( data ) {
+            mediaElement.src = data.song;
+
+            mediaElement.play();
+        });
+    };
+
+    var main = function () {
+        $('audio').mediaelementplayer({
+                features: ["playpause", "current", "progress", "duration", "volume", "fontawesome"],
+                success: function (mediaElement, originalNode) {
+
+                    playNextSong(mediaElement);
+                    mediaElement.pause();
+                    mediaElement.addEventListener('ended', function (e) {
+                        playNextSong(mediaElement);
+
+
+                    }, false);
+
+                    addNextButton(mediaElement, originalNode)
+                }
+            }
+        );
+    };
+
+    main();
 
 });

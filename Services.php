@@ -27,6 +27,10 @@ $services['settings'] = function () {
     return new \Controller\Settings();
 };
 
+$services['music'] = function () {
+    return new \Controller\Music();
+};
+
 $services['languageLoader'] = function ($c) {
     return new \Fredy\LanguageLoader($c['language.default'], $c['language.array'], $c['language.directory'], $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 };

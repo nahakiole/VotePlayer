@@ -154,7 +154,7 @@
     float: left;
     margin: 0;
     padding: 0;
-    width: 26px;
+    width: 20px;
     height: 26px;
     font-size: 11px;
     line-height: 11px;
@@ -187,6 +187,14 @@
 
 .mejs-controls .mejs-button button:before {
     content: "\f026";
+}
+
+.mejs-controls .mejs-button.mejs-next button:before {
+    content: "\f051";
+}
+
+.mejs-controls .mejs-button.mejs-prev button:before {
+    content: "\f048";
 }
 
 /* End: CONTROL BAR */

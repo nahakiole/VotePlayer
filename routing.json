@@ -17,6 +17,11 @@
         },
         {
             "action": "indexAction",
+            "controller": "music",
+            "match": ":^/Music/JSON$:"
+        },
+        {
+            "action": "indexAction",
             "controller": "user",
             "match": ":^/Users$:"
         },
