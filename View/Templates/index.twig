@@ -16,6 +16,9 @@
     <script>
         window.fredyframework = {};
         window.fredyframework.offset = '{{ offset }}';
+        {% for name,value in js %}
+            window.fredyframework.{{ key }} = '{{ value }}';
+        {% endfor %}
     </script>
     <script src="{{ offset }}/View/Assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <!-- /container -->
@@ -60,14 +63,6 @@
 </div>
 <div class="container">
     <div class="player">
-        {#<div class="col-md-2 player-options">#}
-            {#<i class="fa fa-step-backward"></i>#}
-            {#<i class="fa fa-play"></i>#}
-            {#<i class="fa fa-step-forward"></i>#}
-            {#<span class="time">#}
-            {#00:24/02:23#}
-                {#</span>#}
-        {#</div>#}
         <div class="col-md-12 nopadding">
             <audio width="100%" src="{{ offset }}/Music/Hall of the Mountain King.mp3"></audio>
         </div>
