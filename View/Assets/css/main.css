@@ -39,13 +39,17 @@ h1 {
 
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding: 15px 20px;
+    min-width: 100px;
 }
 
 .navbar-inverse .navbar-nav > li > a i {
     font-size: 34px;
-    margin-top: -3px;
-    margin-bottom: -5px;
-    margin-right: 5px;
+    text-align: center;
+    margin: 0 auto 2px;
+    display: block;
 }
 
 .navbar-collapse {
@@ -339,4 +343,8 @@ div.tab-content {
     background: #3f3f3f;
     color: #fff;
     padding-bottom: 5px;
+}
+
+.audio-player {
+    width: 100% !important; /* This is bad and I should feel bad */
 }

@@ -28,7 +28,6 @@
     <script src="{{ offset }}/View/Assets/js/mediaelement/mediaelement-and-player.js"></script>
     <link rel="stylesheet" href="{{ offset }}/View/Assets/css/voteplayer-theme.css" />
     <script src="{{ offset }}/View/Assets/js/main.js"></script>
-    <script src="{{ offset }}/View/Assets/js/player.js"></script>
 </head>
 <body>
 
@@ -39,7 +38,7 @@
             <h1>VotePlayer</h1>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 text-right user-logged-in">
-            <i class="fa fa-user"></i> Robinio
+            <i class="fa fa-user"></i> Login
         </div>
     </div>
 
@@ -63,8 +62,9 @@
 </div>
 <div class="container">
     <div class="player">
+        <script src="{{ offset }}/View/Assets/js/player.js"></script>
         <div class="col-md-12 nopadding">
-            <audio width="100%" src="{{ offset }}/Music/Hall of the Mountain King.mp3"></audio>
+            <audio class="audio-player" src="{{ offset }}/Music/Hall of the Mountain King.mp3"></audio>
         </div>
         <div class="clearfix"></div>
     </div>

@@ -1,7 +1,7 @@
 {
     "navigation": [
         {
-            "text": "<i class='fa fa-home'></i> Home",
+            "text": "<i class='fa fa-home'></i>  Home",
             "url": "/Home",
             "active_class": "active"
         },

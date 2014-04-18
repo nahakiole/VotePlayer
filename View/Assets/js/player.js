@@ -6,7 +6,7 @@ jQuery(function ($) {
 
 
     // add event listener
-    var addNextButton = function (me, music) {
+    var addNextButton = function (mediaElement, music) {
 
 
         var $inner = $(music).parents('.mejs-audio')
@@ -15,10 +15,10 @@ jQuery(function ($) {
         $inner.find('.mejs-play').after(next);
         $inner.find('.mejs-play').before(prev);
         $inner.find('.mejs-next').click(function () {
-            playNextSong(me);
+            playNextSong(mediaElement);
         });
         $inner.find('.mejs-prev').click(function () {
-            playNextSong(me);
+            playNextSong(mediaElement);
         });
 
     };
