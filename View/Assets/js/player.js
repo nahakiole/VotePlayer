@@ -27,8 +27,8 @@ jQuery(function ($) {
         console.log('Next Song');
         console.log(mediaElement.src);
 
-        $.getJSON( "Music/JSON", function( data ) {
-            mediaElement.src = data.song;
+        $.getJSON( fredyframework.offset+"/Music/JSON", function( data ) {
+            mediaElement.src = fredyframework.offset+"/"+data.song;
 
             mediaElement.play();
         });
