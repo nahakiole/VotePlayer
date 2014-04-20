@@ -14,7 +14,7 @@ class User extends Entity
 
     function __construct($id, $username, $password)
     {
-        $this->addField(new Field('id', new Id(), 'input', true, $id, 3));
+        $this->addField(new Field('id', new Integer(), 'input', true, $id, 3));
         $this->addField(new Field('username', new Text(1,255), 'textarea', true, $username, 1));
         $this->addField(new Field('password', new Password(6), 'textarea', true, $password, 2));
         parent::__construct();
