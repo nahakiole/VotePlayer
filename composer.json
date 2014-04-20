@@ -1,6 +1,6 @@
 {
     "require": {
-        "nahakiole/fredyframework": "dev-develop"
+        "nahakiole/fredyframework": "@dev"
     },
     "minimum-stability": "dev"
 }
