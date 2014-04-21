@@ -21,33 +21,31 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Robin</td>
-                                <td class="text-right">
-                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Marc</td>
-                                <td class="text-right">
-                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Abbühl</td>
-                                <td class="text-right">
-                                    <a class="btn btn-primary" href="{{ offset }}/Users/Edit/1">Edit</a>
-                                </td>
-                            </tr>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td class="text-right">
+                                        <a class="btn btn-primary" href="{{ offset }}/Users/Edit/{{ user.id }}">Edit</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
                             </tbody>
                         </table>
+
                     </div>
 
-
                 </div>
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
             </div>
             <div class="col-md-4 top30">
                 <div class="sidebar padding15">

@@ -10,7 +10,7 @@
                     <h2>Edit User</h2>
                 </div>
                 <div class="users padding15">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="{{ offset }}/Users/Add" method="post">
                         <fieldset>
 
 
@@ -19,8 +19,9 @@
                                 <label class="col-md-4 control-label" for="textinput">Username</label>
 
                                 <div class="col-md-4">
-                                    <input id="textinput" name="textinput" type="text"
+                                    <input id="textinput" name="username" type="text"
                                            placeholder="Username"
+                                           value="{{ user.username }}"
                                            class="form-control input-md">
                                     <span class="help-block">Only characters and numbers.</span>
                                 </div>
@@ -31,8 +32,9 @@
                                 <label class="col-md-4 control-label" for="textinput">Password</label>
 
                                 <div class="col-md-4">
-                                    <input id="textinput" name="textinput" type="password"
+                                    <input id="textinput" name="password" type="password"
                                            placeholder="Password"
+                                           value="{{ user.password }}"
                                            class="form-control input-md">
                                     <span class="help-block">At least 6 Characters</span>
                                 </div>
@@ -82,7 +84,7 @@
                                        for="singlebutton"></label>
 
                                 <div class="col-md-4">
-                                    <button id="singlebutton" name="singlebutton"
+                                    <button id="singlebutton" name="submit"
                                             class="btn btn-primary">Save
                                     </button>
                                 </div>
