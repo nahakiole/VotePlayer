@@ -13,6 +13,7 @@ use Fredy\Controller\Controller;
 use Fredy\Model\Repository\Condition;
 use Fredy\Model\Repository\Filter;
 use Fredy\View\HTMLResponse;
+use Fredy\View\RedirectResponse;
 use Model\Repository\JournalRepository;
 use Model\Repository\UserRepository;
 
@@ -35,6 +36,20 @@ class User extends Controller
         $response = new HTMLResponse('users.twig');
         $UserRepository = new UserRepository($this->db);
         $user = $UserRepository->findAll(10);
+
+        if(isset($request->POST["submit"])){
+            if(isset($request->POST["id"])) {
+                $userupdate = new \Model\Entity\User($request->POST["id"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
+                $UserRepository->update($userupdate);
+            }
+            else
+            {
+                $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
+                $UserRepository->create($usercreate);
+            }
+            return new RedirectResponse(OFFSETPATH."/Users");
+        };
+
         $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
@@ -74,18 +89,6 @@ class User extends Controller
         {
             $userID = null;
         }
-
-        if(isset($request->POST["submit"])){
-            if(isset($userID)) {
-                $userupdate = new \Model\Entity\User($request->matches["userid"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
-                $UserRepository->update($userupdate);
-            }
-            else
-            {
-                $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
-                $UserRepository->create($usercreate);
-            }
-        };
 
         $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([

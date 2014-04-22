@@ -10,10 +10,12 @@
                     <h2>Edit User</h2>
                 </div>
                 <div class="users padding15">
-                    <form class="form-horizontal" action="{{ offset }}/Users/Add" method="post">
+                    <form class="form-horizontal" action="{{ offset }}/Users" method="post">
                         <fieldset>
 
 
+                            <input id="id" name="id" type="hidden"
+                                   value="{{ user.id }}">
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput">Username</label>
