@@ -1,4 +1,7 @@
 RewriteEngine On
+php_value upload_max_filesize 60M
+php_value post_max_size 60M
+php_value memory_limit 128M
 RewriteBase /VotePlayer
 ErrorDocument 403 /Error/403
 ErrorDocument 404 /Error/404
