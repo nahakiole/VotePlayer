@@ -23,7 +23,7 @@
         {
             "action": "indexAction",
             "controller": "user",
-            "match": ":^/Users$:"
+            "match": ":^/Users(/(?P<page>[0-9]+))?$:"
         },
         {
             "action": "editAction",

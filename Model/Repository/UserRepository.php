@@ -25,4 +25,18 @@ class UserRepository extends Repository
         parent::__construct($db);
     }
 
+    /**
+     * @return int
+     */
+    public function getCount()
+    {
+        $query =
+            'SELECT count(*) as count FROM ' .
+            $this->tableName .
+            ' ;';
+        $statement = $this->database->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll()['count'];
+    }
+
 }
