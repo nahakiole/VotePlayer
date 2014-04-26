@@ -23,6 +23,7 @@ $services['user'] = function ($c) {
     return new \Controller\User($c['PDO']);
 };
 
+
 $services['settings'] = function () {
     return new \Controller\Settings();
 };
