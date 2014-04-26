@@ -19,8 +19,8 @@ $services['upload'] = function () {
     return new \Controller\Upload();
 };
 
-$services['user'] = function () {
-    return new \Controller\User();
+$services['user'] = function ($c) {
+    return new \Controller\User($c['PDO']);
 };
 
 $services['settings'] = function () {
