@@ -1062,7 +1062,7 @@ class UploadHandler
                     fopen('php://input', 'r'),
                     $append_file ? FILE_APPEND : 0
                 );
-            }
+            }     
             $file_size = $this->get_file_size($file_path, $append_file);
             if ($file_size === $file->size) {
                 $file->url = $this->get_download_url($file->name);
@@ -1077,8 +1077,58 @@ class UploadHandler
                 }
             }
             $this->set_additional_file_properties($file);
+
+            $this->insert_into_db($file_path);
         }
         return $file;
+    }
+
+    protected function insert_into_db($file_path) {
+        // Create new getID3-engine
+        require_once($_SERVER['DOCUMENT_ROOT'].'/VotePlayer/vendor/jamesheinrich/getid3/getid3.php');
+        $getID3 = new getID3;
+
+        $fileInfo = $getID3->analyze($file_path);
+        getid3_lib::CopyTagsToComments($fileInfo);
+
+        if(empty($fileInfo['comments_html']['artist'])) {
+            $fileInfo['comments_html']['artist'] = 'Unbekannter Artist';
+        }
+        $InterpretRepository = new InterpretRepository($this->db);
+        $InterpretFilter = new Filter();
+        $InterpretFilter->addCondition(new Condition('name','=',$fileInfo['comments_html']['artist']));
+        $Interpret = $InterpretRepository->findByFilter(new Filter($InterpretFilter),1);
+
+        if(isset($Interpret)) {
+            $Interpret = new Interpret(null,$fileInfo['comments_html']['artist']);
+            $InterpretRepository->create($Interpret);
+        }
+
+        if(empty($fileInfo['comments_html']['album'])) {
+            $fileInfo['comments_html']['album'] = 'Unbekanntes Album';
+        }
+        $AlbumRepository = new AlbumRepository($this->db);
+        $AlbumFilter = new Filter();
+        $AlbumFilter->addCondition(new Condition('interpret','=',$Interpret->id));
+        $AlbumFilter->addCondition(new Condition('album','=',$fileInfo['comments_html']['album']));
+        $Album = $AlbumRepository->findByFilter(new Filter($AlbumFilter),1);
+
+        if(isset($Album)) {
+            $Album = new Album(null,$fileInfo['comments_html']['album'],$fileInfo['comments_html']['year'],$Interpret->id);
+            $InterpretRepository->create($Album); 
+        }
+
+        $SongRepository = new SongRepository($this->db);
+        $songTitle = $fileInfo['filenamepath'];
+        if(!empty($fileInfo['comments_html']['title'])) {
+            $songTitle = $fileInfo['comments_html']['title'];
+        }
+        
+        $time = '00:'.$fileInfo['playtime_string'];
+        $parsed = date_parse($time);
+        $seconds = $parsed['hour'] * 3600 + $parsed['minute'] * 60 + $parsed['second'];
+
+        $Song = new Song(null,$fileInfo['comments_html']['title'],$Interpret->id,$Album->id,$seconds);
     }
 
     protected function readfile($file_path) {

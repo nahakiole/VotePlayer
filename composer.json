@@ -4,10 +4,15 @@
         {
             "type": "vcs",
             "url": "https://github.com/nahakiole/fredyframework"
+        },
+        {
+        	"type": "vcs",
+        	"url": "https://github.com/jamesheinrich/getid3"
         }
     ],
     "require": {
-        "nahakiole/fredyframework": "@dev"
+        "nahakiole/fredyframework": "@dev",
+        "jamesheinrich/getid3": "master"
     },
     "minimum-stability": "dev"
 }
