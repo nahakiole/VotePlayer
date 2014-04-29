@@ -16,6 +16,7 @@ use Fredy\View\HTMLResponse;
 use Fredy\View\RedirectResponse;
 use Model\Repository\JournalRepository;
 use Model\Repository\UserRepository;
+use Controller\Pager;
 
 class User extends Controller
 {
@@ -36,6 +37,12 @@ class User extends Controller
         $response = new HTMLResponse('users.twig');
         $UserRepository = new UserRepository($this->db);
         $user = $UserRepository->findAll(10);
+        $page = 1;
+        if(isset($request->matches['page'])) {
+            $page = intval($request->matches['page']);
+        }
+        $pager = new Pager();
+
 
         if(isset($request->POST["submit"])){
             if(isset($request->POST["id"])) {
@@ -48,12 +55,13 @@ class User extends Controller
                 $UserRepository->create($usercreate);
             }
             return new RedirectResponse(OFFSETPATH."/Users");
-        };
+        }
 
         $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
-                'users' => $user
+                'users' => $user,
+                'pager' => $pager->getPage(OFFSETPATH."/Users",$page,10)
             ]
         );
         return $response;
@@ -82,8 +90,8 @@ class User extends Controller
     {
         $response = new HTMLResponse('user.twig');
         $UserRepository = new UserRepository($this->db);
-        if(isset($request->matches["userid"])) {
-            $userID = $UserRepository->findById($request->matches["userid"]);
+        if(isset($request->matches['userid'])) {
+            $userID = $UserRepository->findById($request->matches['userid']);
         }
         else
         {
