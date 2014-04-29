@@ -36,7 +36,8 @@ class UserRepository extends Repository
             ' ;';
         $statement = $this->database->prepare($query);
         $statement->execute();
-        return $statement->fetchAll()['count'];
+        //var_dump($statement->fetchAll());
+        return $statement->fetchAll()[0]['count'];
     }
 
 }

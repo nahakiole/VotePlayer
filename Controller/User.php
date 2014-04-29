@@ -61,7 +61,7 @@ class User extends Controller
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
                 'users' => $user,
-                'pager' => $pager->getPage(OFFSETPATH."/Users",$page,10)
+                'pager' => $pager->getPage(OFFSETPATH."/Users",$page,$UserRepository->getCount())
             ]
         );
         return $response;

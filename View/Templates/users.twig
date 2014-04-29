@@ -37,13 +37,11 @@
                     </div>
                     <ul class="pagination">
                         <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
 
-                        for() {
-                        <li><a href="#">4</a></li>
-                        }
+                       {% for page in pager %}
+                        <li class="{{ page.active }}"><a href="{{ page.url }}">{{ page.number }}</a></li>
+                       {% endfor %}
+
                         <li><a href="#">&raquo;</a></li>
 
                     </ul>

@@ -15,11 +15,16 @@ class Pager {
 
 
     public function getPage($url = '', $activepage, $totalpage){
-        //foreach ($this->page['page'] as &$link) {
-          //  if (preg_match(':^'.$link['url'].':', $url)){
-            //    $link['active'] = 'active';
-         //   }
-        //}
-        //return $this->Pager['page'];
+        for($i=1; $i <= $totalpage; $i++) {
+            $this->page[] = array('url' => $url.'/'.$i,'active'=>'', 'total' => $totalpage, 'number' => $i);
+        }
+
+        foreach ($this->page as &$link) {
+
+                if (preg_match(':^'.$link['url'].':', $url.'/'.$activepage)){
+                $link['active'] = 'active';
+            }
+        }
+        return $this->page;
     }
 }
