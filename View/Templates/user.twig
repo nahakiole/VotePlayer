@@ -10,7 +10,7 @@
                     <h2>Edit User</h2>
                 </div>
                 <div class="users padding15">
-                    <form class="form-horizontal" action="{{ offset }}/Users" method="post">
+                    <form class="form-horizontal" action="{{ offset }}/Users/Add" method="post">
                         <fieldset>
 
 
@@ -26,6 +26,11 @@
                                            value="{{ user.username }}"
                                            class="form-control input-md">
                                     <span class="help-block">Only characters and numbers.</span>
+                                    {% if isset({ error.usernameEmpty}) %}
+                                        <div class="alert alert-danger">
+                                            error.usernameEmpty
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
 
@@ -38,46 +43,28 @@
                                            placeholder="Password"
                                            class="form-control input-md">
                                     <span class="help-block">At least 6 Characters</span>
+
                                 </div>
                             </div>
 
                             <!-- Multiple Checkboxes -->
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label class="col-md-4 control-label" for="checkboxes">Options </label>
 
                                 <div class="col-md-4">
                                     <div class="checkbox">
                                         <label for="checkboxes-0">
-                                            <input type="checkbox" name="checkboxes"
+                                            <input type="hidden" name="admin"
+                                                   id="checkboxes-0" value="0">
+                                            <input type="checkbox" name="admin"
                                                    id="checkboxes-0" value="1">
-                                            Can add songs automatically.
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label for="checkboxes-1">
-                                            <input type="checkbox" name="checkboxes"
-                                                   id="checkboxes-1" value="2">
-                                            Can add songs to playlist.
+                                            Administrator
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
 
-
-                            <!-- Select Basic -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="selectbasic">Groups</label>
-
-                                <div class="col-md-4">
-                                    <select id="selectbasic" name="selectbasic"
-                                            class="form-control" multiple>
-                                        <option value="1">Administrator</option>
-                                        <option value="2">User</option>
-                                        <option value="2">Moderator</option>
-                                    </select>
-                                </div>
-                            </div>
 
                             <!-- Button -->
                             <div class="form-group">
@@ -99,14 +86,9 @@
             </div>
             <div class="col-md-4 top30">
                 <div class="sidebar padding15">
-                    <h2>Installation</h2>
+                    <h2>Add User</h2>
 
-                    <p>A small river named Duden flows by their place and
-                        supplies
-                        it with the necessary regelialia. It is a
-                        paradisematic country, in which roasted parts of
-                        sentences
-                        fly into your mouth. </p>
+                    <p>Here you can register a new user. </p>
 
 
                 </div>

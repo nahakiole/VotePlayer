@@ -36,32 +36,21 @@ class User extends Controller
     {
         $response = new HTMLResponse('users.twig');
         $UserRepository = new UserRepository($this->db);
-        $user = $UserRepository->findAll(10);
+
         $page = 1;
         if(isset($request->matches['page'])) {
             $page = intval($request->matches['page']);
         }
         $pager = new Pager();
 
+        $user = $UserRepository->findAll(10,$page*10-10);
 
-        if(isset($request->POST["submit"])){
-            if(isset($request->POST["id"])) {
-                $userupdate = new \Model\Entity\User($request->POST["id"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
-                $UserRepository->update($userupdate);
-            }
-            else
-            {
-                $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT));
-                $UserRepository->create($usercreate);
-            }
-            return new RedirectResponse(OFFSETPATH."/Users");
-        }
 
         $navigation = new Navigation('navigation.json');
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
                 'users' => $user,
-                'pager' => $pager->getPage(OFFSETPATH."/Users",$page,$UserRepository->getCount())
+                'pager' => $pager->getPage(OFFSETPATH."/Users",$page, ceil( $UserRepository->getCount()/10))
             ]
         );
         return $response;
@@ -92,17 +81,80 @@ class User extends Controller
         $response = new HTMLResponse('user.twig');
         $UserRepository = new UserRepository($this->db);
         if(isset($request->matches['userid'])) {
-            $userID = $UserRepository->findById($request->matches['userid']);
+            $currentUser = $UserRepository->findById($request->matches['userid']);
         }
         else
         {
-            $userID = null;
+            $currentUser = new \Model\Entity\User(null,null,null, 0);
         }
 
+
         $navigation = new Navigation('navigation.json');
+        $error = [];
+
+        if(isset($request->POST["submit"])){
+            if(!isset($request->POST["username"])){
+                $error['usernameEmpty'] = 'Username is empty';
+            }
+            if (!preg_match(":[A-Za-z0-9]+:", $request->POST["username"])){
+                $error['usernameNotValid'] = 'Username not valid. You can use only characters and numbers.';
+            }
+
+
+            if(isset($request->POST["id"])) {
+                if(isset($request->POST["password"])){
+                    if(!len($request->POST["password"]) > 6){
+                        $error['passwordLen'] = 'Password must have at least 6 Characters!';
+                    }
+                }
+                else
+                {
+                    $currentUser['password']->value = $request->POST["password"];
+                }
+
+                //$userupdate = new \Model\Entity\User($request->POST["id"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
+
+            }
+            else
+            {
+                if(!isset($request->POST["password"])){
+                    $error['passwordEmpty'] = 'Password is empty';
+                }
+                if(!len($request->POST["password"]) > 6){
+                    $error['passwordLen'] = 'Password must have at least 6 Characters!';
+                }
+               // $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
+
+            }
+
+            if (count($error) > 0){
+                $response->setTwigVariables([
+                        'navigation' => $navigation->getNavigation($request->matches[0]),
+                        'user' => $currentUser,
+                        'error' => $error
+                    ]
+                );
+                return $response;
+            }
+                else
+                {
+                    if(isset($request->POST["id"])) {
+                        $UserRepository->update($currentUser);
+                    }
+                    else
+                    {
+                        $UserRepository->create($currentUser);
+                    }
+                    return new RedirectResponse(OFFSETPATH."/Users");
+                }
+
+            }
+
+
+
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
-                'user' => $userID
+                'user' => $currentUser
             ]
         );
         return $response;

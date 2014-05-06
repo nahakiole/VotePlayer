@@ -19,7 +19,7 @@ class UserRepository extends Repository
      */
     public function __construct($db)
     {
-        $this->entity = new User(null,null,null);
+        $this->entity = new User(null,null,null,null);
         $this->factory = new UserFactory();
 
         parent::__construct($db);
