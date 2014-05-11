@@ -13,7 +13,6 @@ class Pager {
 
     private $page = [];
 
-
     public function getPage($url = '', $activepage, $totalpage){
         for($i=1; $i <= $totalpage; $i++) {
             $this->page[] = array('url' => $url.'/'.$i,'active'=>'', 'total' => $totalpage, 'number' => $i);

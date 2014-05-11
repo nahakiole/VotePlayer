@@ -35,3 +35,7 @@ $services['music'] = function () {
 $services['languageLoader'] = function ($c) {
     return new \Fredy\LanguageLoader($c['language.default'], $c['language.array'], $c['language.directory'], $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 };
+
+$services['register'] = function ($c) {
+    return new \Controller\User($c['PDO']);
+};
