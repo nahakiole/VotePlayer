@@ -10,7 +10,8 @@
                     <h2>Users</h2>
                 </div>
                 <div class="users padding15">
-                    <a class="btn btn-primary" href="{{ offset }}/Users/Add">Add User</a>
+                    <a class="btn btn-primary btn-lg" href="{{ offset }}/Users/Add">Add User </a> <br/>
+                    <div class="alert alert-success top10">User saved!</div>
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>
@@ -36,15 +37,13 @@
 
                     </div>
                     <ul class="pagination">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
+                       <!--<li><a href="#">&laquo;</a></li> -->
 
-                        for() {
-                        <li><a href="#">4</a></li>
-                        }
-                        <li><a href="#">&raquo;</a></li>
+                       {% for page in pager %}
+                        <li class="{{ page.active }}"><a href="{{ page.url }}">{{ page.number }}</a></li>
+                       {% endfor %}
+
+                       <!-- <li><a href="#">&raquo;</a></li> -->
 
                     </ul>
 

@@ -19,7 +19,7 @@ class UserRepository extends Repository
      */
     public function __construct($db)
     {
-        $this->entity = new User(null,null,null);
+        $this->entity = new User(null,null,null,null);
         $this->factory = new UserFactory();
 
         parent::__construct($db);
@@ -36,7 +36,8 @@ class UserRepository extends Repository
             ' ;';
         $statement = $this->database->prepare($query);
         $statement->execute();
-        return $statement->fetchAll()['count'];
+        //var_dump($statement->fetchAll());
+        return $statement->fetchAll()[0]['count'];
     }
 
 }

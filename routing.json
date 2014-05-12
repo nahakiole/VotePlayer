@@ -54,6 +54,11 @@
             "action": "noAccess",
             "controller": "error",
             "match": ":^/Error/403:"
+        },
+        {
+            "action": "registerAction",
+            "controller": "user",
+            "match": ":^/Register$:"
         }
     ]
 }

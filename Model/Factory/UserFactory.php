@@ -16,6 +16,6 @@ class UserFactory extends Factory
      */
     public function build($data)
     {
-        return new User($data['id'], $data['username'], $data['password']);
+        return new User($data['id'], $data['username'], $data['password'],$data['admin']);
     }
 }
