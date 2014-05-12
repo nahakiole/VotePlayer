@@ -65,8 +65,93 @@ class User extends Controller
     {
         $response = new HTMLResponse('login.twig');
         $navigation = new Navigation('navigation.json');
+        $UserRepository = new UserRepository($this->db);
+
+
+
+
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0])
+            ]
+        );
+        return $response;
+
+    }
+    function registerAction($request)
+    {
+        $response = new HTMLResponse('register.twig');
+        $UserRepository = new UserRepository($this->db);
+
+        $currentUser = new \Model\Entity\User(null,null,null, 0);
+
+
+
+        $navigation = new Navigation('navigation.json');
+        $error = [];
+
+        if(isset($request->POST["submit"])){
+
+            if(strlen($request->POST["username"])== 0){
+                $error['usernameEmpty'] = 'Username is empty';
+            }
+            elseif (!preg_match(":[A-Za-z0-9]+:", $request->POST["username"])){
+                $error['usernameNotValid'] = 'Username not valid. You can use only characters and numbers.';
+            }
+            else
+            {
+                $currentUser['username']->value = $request->POST["username"];
+            }
+
+
+            if(isset($request->POST["id"])) {
+                if(isset($request->POST["password"])){
+                    if(strlen($request->POST["password"]) < 6){
+                        $error['passwordLen'] = 'Password must have at least 6 Characters!';
+                    }
+                }
+                else
+                {
+                    $currentUser['password']->value = $request->POST["password"];
+                }
+
+
+            }
+            else
+            {
+                if(strlen($request->POST["password"]) == 0){
+                    $error['passwordEmpty'] = 'Password is empty';
+                }
+                if(strlen($request->POST["password"]) < 6){
+                    $error['passwordLen'] = 'Password must have at least 6 Characters!';
+                }
+
+            }
+            if (count($error) > 0){
+
+                $response->setTwigVariables([
+                        'navigation' => $navigation->getNavigation($request->matches[0]),
+                        'user' => $currentUser,
+                        'error' => $error
+                    ]
+                );
+                return $response;
+            }
+            else
+            {
+
+            $UserRepository->create($currentUser);
+
+            return new RedirectResponse(OFFSETPATH."/Login");
+            }
+
+        }
+
+
+
+        $response->setTwigVariables([
+                'navigation' => $navigation->getNavigation($request->matches[0]),
+                'user' => $currentUser,
+                'error' => $error
             ]
         );
         return $response;
@@ -112,6 +197,10 @@ class User extends Controller
                     if(strlen($request->POST["password"]) < 6){
                         $error['passwordLen'] = 'Password must have at least 6 Characters!';
                     }
+                    else
+                    {
+                        $currentUser['password']->value = $request->POST["password"];
+                    }
                 }
                 else
                 {
@@ -152,6 +241,7 @@ class User extends Controller
                         $UserRepository->create($currentUser);
                     }
                     return new RedirectResponse(OFFSETPATH."/Users");
+
                 }
 
         }

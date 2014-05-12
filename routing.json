@@ -56,9 +56,9 @@
             "match": ":^/Error/403:"
         },
         {
-            "action": "indexAction",
+            "action": "registerAction",
             "controller": "user",
-            "match": ":^/Register/:"
+            "match": ":^/Register$:"
         }
     ]
 }
