@@ -39,10 +39,10 @@ jQuery(function ($) {
                 features: ["playpause", "current", "progress", "duration", "volume", "fontawesome"],
                 success: function (mediaElement, originalNode) {
 
-                    playNextSong(mediaElement);
-                    mediaElement.pause();
+                    //playNextSong(mediaElement);
+                    //mediaElement.pause();
                     mediaElement.addEventListener('ended', function (e) {
-                        playNextSong(mediaElement);
+                        //playNextSong(mediaElement);
 
 
                     }, false);

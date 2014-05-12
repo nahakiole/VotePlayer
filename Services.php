@@ -24,8 +24,8 @@ $services['user'] = function ($c) {
 };
 
 
-$services['settings'] = function () {
-    return new \Controller\Settings();
+$services['settings'] = function ($c) {
+    return new \Controller\Settings($c['PDO']);
 };
 
 $services['music'] = function () {

@@ -2,10 +2,10 @@
 
 namespace Model\Entity;
 
-use  Fredy\Model\Entity\DataType\Id;
-use Fredy\Model\Entity\DataType\Integer;
-use Fredy\Model\Entity\DataType\Password;
-use  Fredy\Model\Entity\DataType\Text;
+use  Fredy\Model\Entity\Datatype\Id;
+use Fredy\Model\Entity\Datatype\Integer;
+use Fredy\Model\Entity\Datatype\Password;
+use  Fredy\Model\Entity\Datatype\Text;
 use Fredy\Model\Entity\Entity;
 use Fredy\Model\Entity\Field;
 

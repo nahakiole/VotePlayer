@@ -40,10 +40,12 @@ class Upload extends Controller
     {
 
         $handler = new UploadHandler([
-            'upload_dir' => ROOTPATH.'/Music/',
-            'upload_url' => OFFSETPATH.'/Music/',
+            'upload_dir' => ROOTPATH.'/Upload/',
+            'upload_url' => OFFSETPATH.'/Upload/',
             'script_url' => OFFSETPATH.$request->matches[0],
         ]);
+
+
 
         die();
 

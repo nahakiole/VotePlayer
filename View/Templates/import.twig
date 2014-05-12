@@ -1,0 +1,37 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-8 top30">
+
+                <div class="settings padding15">
+                    <h2>Settings</h2>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="messages">
+                            {% for song in songs %}
+                                Imported {{ song.name }} <br/>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 top30">
+                <div class="sidebar padding15">
+                    <h2>Settings</h2>
+
+                    <p>Here you can change the settings to alter the appearance and functionality of voteplayer. </p>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

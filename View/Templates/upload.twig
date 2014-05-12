@@ -49,7 +49,7 @@
             {% } %}
         </td>
         <td>
-            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+
         </td>
         <td>
             {% if (file.deleteUrl) { %}
@@ -102,13 +102,6 @@
                                     <i class="fa fa-times"></i>
                                     <span>Cancel upload</span>
                                 </button>
-                                <button type="button"
-                                        class="btn btn-danger delete">
-                                    <i class="fa fa-trash-o"></i>
-                                    <span>Delete</span>
-                                </button>
-
-                                <input type="checkbox" class="toggle">
                                 <!-- The global file processing state -->
                                 <span class="fileupload-process"></span>
                             </div>
@@ -156,9 +149,6 @@
                     <script src="{{ offset }}/View/Assets/js/vendor/jquery.fileupload-ui.js"></script>
                     <!-- The main application script -->
                     <script src="{{ offset }}/View/Assets/js/vendor/main.js"></script>
-
-                    <a href="http://blueimp.github.io/jQuery-File-Upload/index.html">jQuery
-                        File Uploader</a>
                 </div>
             </div>
             <div class="col-md-4 top30">

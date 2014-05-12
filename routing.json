@@ -41,6 +41,11 @@
             "match": ":^/Settings$:"
         },
         {
+            "action": "importAction",
+            "controller": "settings",
+            "match": ":^/Settings/Import$:"
+        },
+        {
             "action": "notFound",
             "controller": "error",
             "match": ":^/Error/404:"
