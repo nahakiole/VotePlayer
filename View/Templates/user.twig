@@ -10,7 +10,7 @@
                     <h2>Edit User</h2>
                 </div>
                 <div class="users padding15">
-                    <form class="form-horizontal" action="{{ offset }}/Users/Add" method="post">
+                    <form class="form-horizontal" action="{{ offset }}/Users/{{ userEditUrl }}" method="post">
                         <fieldset>
 
 
@@ -52,6 +52,11 @@
                                      {% if error.passwordLen is defined %}
                                         <div class="alert alert-danger">
                                            {{ error.passwordLen }}
+                                        </div>
+                                    {% endif %}
+                                    {% if error.passwordEmpty is defined %}
+                                        <div class="alert alert-danger">
+                                            {{ error.passwordEmpty }}
                                         </div>
                                     {% endif %}
 
