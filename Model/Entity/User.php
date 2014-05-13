@@ -17,7 +17,7 @@ class User extends Entity
         $this->addField(new Field('id', new Id(), 'input', true, $id, 3));
         $this->addField(new Field('username', new Text(1,255), 'textarea', true, $username, 1));
         $this->addField(new Field('password', new Password(6), 'textarea', true, $password, 2));
-        $this->addField(new Field('admin', new Text(1,1), 'input',true, $admin,4));
+        $this->addField(new Field('admin', new Integer(), 'input',true, $admin,4));
         parent::__construct();
     }
 
