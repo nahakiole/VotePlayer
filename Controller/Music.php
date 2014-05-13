@@ -10,6 +10,7 @@ namespace Controller;
 
 
 use Fredy\Controller\Controller;
+use Fredy\View\HTMLResponse;
 use Fredy\View\JSONResponse;
 
 class Music extends Controller {
@@ -38,6 +39,22 @@ class Music extends Controller {
                'song' => $files[$file]
            ]
         ]);
+        return $response;
+    }
+
+    /**
+     * @param $request \Fredy\Model\Entity\Request
+     * @return \Fredy\View\Response
+     */
+    function playMusicAction($request){
+        $response = new HTMLResponse('player.twig');
+        $navigation = new Navigation('navigation.json');
+        $response->setTwigVariables(
+            [
+                'navigation' => $navigation->getNavigation($request->matches[0])
+            ]
+        );
+
         return $response;
     }
 }

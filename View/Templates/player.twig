@@ -1,0 +1,42 @@
+{% extends "index.twig" %}
+
+{% block content %}
+    <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+    <div class="col-md-8 top30">
+
+    <div class="settings padding15">
+    <h2>Player</h2>
+
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+    <div class="tab-pane active" id="messages">
+        <div class="player">
+            <script src="{{ offset }}/View/Assets/js/player.js"></script>
+            <div class="col-md-12 nopadding">
+                <audio class="audio-player" src="{{ offset }}/Upload/Hall%20of%20the%20Mountain%20King.mp3"></audio>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4 top30">
+        <div class="sidebar padding15">
+            <h2>Player</h2>
+
+            <p>Here you can play the choosen songs.</p>
+
+
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+
+{% endblock %}

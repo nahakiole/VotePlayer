@@ -64,6 +64,11 @@
             "action": "registerAction",
             "controller": "user",
             "match": ":^/Register$:"
+        },
+        {
+            "action": "playMusicAction",
+            "controller": "music",
+            "match": ":^/PlayMusic$:"
         }
     ]
 }
