@@ -81,15 +81,13 @@ class User extends Controller
         if(isset($request->POST["submit"])){
             $filter = new Filter($this->db);
             $filter->addCondition(new Condition('username','=',$request->POST['username']));
-            $filter->addCondition(new Condition('password','=',password_hash($request->POST["password"], PASSWORD_DEFAULT)));
-            $user = $UserRepository->findByFilter($filter);
-
-            if(count($user) == 0) {
+            $user = $UserRepository->findByFilter($filter,1);
+            if((count($user) <> 1) || !password_verify ( $request->POST['password'], (string) $user[0]->password->value )) {
                 $error = 'Login is incorrect!';
             }
             else
             {
-                $request->SESSION['userID'];
+                $request->SESSION['userID'] = $user[0]->id->value;
                 return new RedirectResponse(OFFSETPATH."/Home");
             }
 

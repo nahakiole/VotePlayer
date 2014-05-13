@@ -7,6 +7,7 @@ use  Fredy\Configuration;
 use Fredy\Controller\Controller;
 use  Fredy\LanguageLoader;
 use  Fredy\View\HTMLResponse;
+use Model\Repository\UserRepository;
 
 class Overview extends Controller
 {
@@ -24,6 +25,7 @@ class Overview extends Controller
         //echo $languageContainer->getString('password_too_short');
         //echo $languageContainer->getStringWithAttributes('integer_min_max',[ 10, 11]);
         $navigation = new Navigation('navigation.json');
+
         $response->setTwigVariables(
             [
                 'title' => 'Demo',
