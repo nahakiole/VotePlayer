@@ -348,3 +348,13 @@ div.tab-content {
 .audio-player {
     width: 100% !important; /* This is bad and I should feel bad */
 }
+
+.login {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
