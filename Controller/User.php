@@ -180,6 +180,7 @@ class User extends Controller
 
         if(isset($request->POST["submit"])){
 
+
             if(strlen($request->POST["username"])== 0){
                 $error['usernameEmpty'] = 'Username is empty';
             }
@@ -234,8 +235,8 @@ class User extends Controller
                     {
                         $UserRepository->create($currentUser);
                     }
-                    //return new RedirectResponse(OFFSETPATH."/Users");                }
-
+                    return new RedirectResponse(OFFSETPATH."/Users");
+                }
         }
 
 
