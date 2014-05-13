@@ -193,18 +193,17 @@ class User extends Controller
 
 
             if(isset($request->POST["id"])) {
-                if(isset($request->POST["password"])){
+                if(strlen($request->POST["password"])> 0){
                     if(strlen($request->POST["password"]) < 6){
                         $error['passwordLen'] = 'Password must have at least 6 Characters!';
                     }
                     else
                     {
-                        $currentUser['password']->value = $request->POST["password"];
+                        $currentUser['password']->value = password_hash($request->POST["password"], PASSWORD_DEFAULT);
                     }
                 }
                 else
                 {
-                    $currentUser['password']->value = $request->POST["password"];
                 }
 
                 //$userupdate = new \Model\Entity\User($request->POST["id"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
@@ -212,12 +211,7 @@ class User extends Controller
             }
             else
             {
-                if(strlen($request->POST["password"]) == 0){
-                    $error['passwordEmpty'] = 'Password is empty';
-                }
-                if(strlen($request->POST["password"]) < 6){
-                    $error['passwordLen'] = 'Password must have at least 6 Characters!';
-                }
+                $this->checkPassword($request->POST['password']);
                // $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
 
             }
@@ -240,9 +234,7 @@ class User extends Controller
                     {
                         $UserRepository->create($currentUser);
                     }
-                    return new RedirectResponse(OFFSETPATH."/Users");
-
-                }
+                    //return new RedirectResponse(OFFSETPATH."/Users");                }
 
         }
 
@@ -255,5 +247,15 @@ class User extends Controller
             ]
         );
         return $response;
+    }
+
+    private function checkPassword($pass)
+    {
+        if(strlen($pass) == 0){
+            $error['passwordEmpty'] = 'Password is empty';
+        }
+        if(strlen($pass) < 6){
+            $error['passwordLen'] = 'Password must have at least 6 Characters!';
+        }
     }
 }
