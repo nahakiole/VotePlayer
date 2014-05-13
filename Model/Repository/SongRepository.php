@@ -3,10 +3,8 @@
 namespace Model\Repository;
 
 use Model\Entity\Song;
-use Model\Entity\User;
 use Fredy\Model\Repository\Repository;
 use Model\Factory\SongFactory;
-use Model\Factory\UserFactory;
 
 class SongRepository extends Repository
 {

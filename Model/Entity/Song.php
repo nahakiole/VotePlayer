@@ -23,4 +23,4 @@ class Song extends Entity {
         $this->addField(new Field('path', new Text(), 'textarea', true, $path, 2));
         parent::__construct();
     }
-} 
+}
