@@ -36,7 +36,11 @@ class User extends Controller
     {
         $response = new HTMLResponse('users.twig');
         $UserRepository = new UserRepository($this->db);
-
+        $userMessage = '';
+        if(isset($request->SESSION['user_saved_message'])) {
+             $userMessage = $request->SESSION['user_saved_message'];
+             unset($request->SESSION['user_saved_message']);
+         }
 
         $page = 1;
         if(isset($request->matches['page'])) {
@@ -51,7 +55,8 @@ class User extends Controller
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
                 'users' => $user,
-                'pager' => $pager->getPage(OFFSETPATH."/Users",$page, ceil( $UserRepository->getCount()/10))
+                'pager' => $pager->getPage(OFFSETPATH."/Users",$page, ceil( $UserRepository->getCount()/10)),
+                'userMessage' => $userMessage
             ]
         );
         return $response;
@@ -168,10 +173,12 @@ class User extends Controller
         $UserRepository = new UserRepository($this->db);
         if(isset($request->matches['userid'])) {
             $currentUser = $UserRepository->findById($request->matches['userid']);
+            $userEditUrl = 'Edit/'.$request->matches['userid'];
         }
         else
         {
             $currentUser = new \Model\Entity\User(null,null,null, 0);
+            $userEditUrl = 'Add';
         }
 
 
@@ -194,7 +201,7 @@ class User extends Controller
             }
 
 
-            if(isset($request->POST["id"])) {
+            if(($request->POST["id"])> 0) {
                 if(strlen($request->POST["password"])> 0){
                     if(strlen($request->POST["password"]) < 6){
                         $error['passwordLen'] = 'Password must have at least 6 Characters!';
@@ -208,13 +215,20 @@ class User extends Controller
                 {
                 }
 
-                //$userupdate = new \Model\Entity\User($request->POST["id"],$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
 
             }
             else
             {
-                $this->checkPassword($request->POST['password']);
-               // $usercreate = new \Model\Entity\User(null,$request->POST["username"],password_hash($request->POST["password"], PASSWORD_DEFAULT),$request->POST["admin"]);
+                if(strlen($request->POST["password"]) == 0){
+                    $error['passwordEmpty'] = 'Password is empty';
+                }
+                elseif(strlen($request->POST["password"]) < 6){
+                    $error['passwordLen'] = 'Password must have at least 6 Characters!';
+                }
+                else
+                {
+                    $currentUser['password']->value = password_hash($request->POST["password"], PASSWORD_DEFAULT);
+                }
 
             }
             if (count($error) > 0){
@@ -222,13 +236,15 @@ class User extends Controller
                 $response->setTwigVariables([
                         'navigation' => $navigation->getNavigation($request->matches[0]),
                         'user' => $currentUser,
-                        'error' => $error
+                        'error' => $error,
+                        'userEditUrl' => $userEditUrl
                     ]
                 );
                 return $response;
             }
                 else
                 {
+                    $request->SESSION['user_saved_message'] = 'User saved!';
                     if(isset($request->POST["id"])) {
                         $UserRepository->update($currentUser);
                     }
@@ -245,19 +261,11 @@ class User extends Controller
         $response->setTwigVariables([
                 'navigation' => $navigation->getNavigation($request->matches[0]),
                 'user' => $currentUser,
-                'error' => $error
+                'error' => $error,
+                'userEditUrl' => $userEditUrl
             ]
         );
         return $response;
     }
 
-    private function checkPassword($pass)
-    {
-        if(strlen($pass) == 0){
-            $error['passwordEmpty'] = 'Password is empty';
-        }
-        if(strlen($pass) < 6){
-            $error['passwordLen'] = 'Password must have at least 6 Characters!';
-        }
-    }
 }

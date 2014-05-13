@@ -11,7 +11,9 @@
                 </div>
                 <div class="users padding15">
                     <a class="btn btn-primary btn-lg" href="{{ offset }}/Users/Add">Add User </a> <br/>
-                    <div class="alert alert-success top10">User saved!</div>
+                    {% if userMessage|length > 0 %}
+                        <div class="alert alert-success top10">{{ userMessage }}</div>
+                    {% endif %}
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>
