@@ -81,7 +81,7 @@ class User extends Controller
         if(isset($request->POST["submit"])){
             $filter = new Filter($this->db);
             $filter->addCondition(new Condition('username','=',$request->POST['username']));
-            $filter->addCondition(new Condition('password','=',$request->POST['password']));
+            $filter->addCondition(new Condition('password','=',password_hash($request->POST["password"], PASSWORD_DEFAULT)));
             $user = $UserRepository->findByFilter($filter);
 
             if(count($user) == 0) {
