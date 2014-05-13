@@ -54,6 +54,11 @@
                                            {{ error.passwordLen }}
                                         </div>
                                     {% endif %}
+                                    {% if error.passwordEmpty is defined %}
+                                        <div class="alert alert-danger">
+                                            {{ error.passwordEmpty }}
+                                        </div>
+                                    {% endif %}
 
                                 </div>
                             </div>

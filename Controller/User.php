@@ -71,12 +71,36 @@ class User extends Controller
         $response = new HTMLResponse('login.twig');
         $navigation = new Navigation('navigation.json');
         $UserRepository = new UserRepository($this->db);
+        $error = '';
+        $userMessage = '';
+        if(isset($request->SESSION['user_saved_message'])) {
+            $userMessage = $request->SESSION['user_saved_message'];
+            unset($request->SESSION['user_saved_message']);
+        }
+
+        if(isset($request->POST["submit"])){
+            $filter = new Filter($this->db);
+            $filter->addCondition(new Condition('username','=',$request->POST['username']));
+            $filter->addCondition(new Condition('password','=',$request->POST['password']));
+            $user = $UserRepository->findByFilter($filter);
+
+            if(count($user) == 0) {
+                $error = 'Login is incorrect!';
+            }
+            else
+            {
+                $request->SESSION['userID'];
+                return new RedirectResponse(OFFSETPATH."/Home");
+            }
 
 
+        }
 
 
         $response->setTwigVariables([
-                'navigation' => $navigation->getNavigation($request->matches[0])
+                'navigation' => $navigation->getNavigation($request->matches[0]),
+                'error' => $error,
+                'userMessage' => $userMessage
             ]
         );
         return $response;
@@ -108,29 +132,19 @@ class User extends Controller
             }
 
 
-            if(isset($request->POST["id"])) {
-                if(isset($request->POST["password"])){
-                    if(strlen($request->POST["password"]) < 6){
-                        $error['passwordLen'] = 'Password must have at least 6 Characters!';
-                    }
-                }
-                else
-                {
-                    $currentUser['password']->value = $request->POST["password"];
-                }
 
-
-            }
-            else
-            {
                 if(strlen($request->POST["password"]) == 0){
                     $error['passwordEmpty'] = 'Password is empty';
                 }
-                if(strlen($request->POST["password"]) < 6){
+                elseif(strlen($request->POST["password"]) < 6){
                     $error['passwordLen'] = 'Password must have at least 6 Characters!';
                 }
+                else
+                {
+                    $currentUser['password']->value = password_hash($request->POST["password"], PASSWORD_DEFAULT);
+                }
 
-            }
+
             if (count($error) > 0){
 
                 $response->setTwigVariables([
@@ -143,7 +157,7 @@ class User extends Controller
             }
             else
             {
-
+            $request->SESSION['user_saved_message'] = 'User saved!';
             $UserRepository->create($currentUser);
 
             return new RedirectResponse(OFFSETPATH."/Login");
