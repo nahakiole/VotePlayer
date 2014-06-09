@@ -7,8 +7,8 @@ $services['PDO'] = function ($c) {
         , $c['db.password']);
 };
 
-$services['demo'] = function () {
-    return new \Controller\Overview();
+$services['demo'] = function ($c) {
+    return new \Controller\Overview($c['PDO']);
 };
 
 $services['error'] = function () {

@@ -8,21 +8,20 @@
 
                 <div class="playlist padding15">
 
+                    {% for song in playlist %}
 
                     <div class="media">
-                        <a class="pull-left cover" href="#">
-                            <img src="{{ offset }}/View/Assets/img/demo_queen.png"
-                                 alt="Queen"/>
-                        </a>
+
+
 
                         <div class="media-body">
                             <div class="song-information">
-                            Step out<br/>
-                            José González<br/>
-                            Soundtrack: The Live of Walter Mitty
+                                {{ song.name }}
                             </div>
                         </div>
                     </div>
+
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-4 top30">

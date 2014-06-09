@@ -6,6 +6,11 @@
             "match": ":^/(Playlist|Home)?$:"
         },
         {
+            "action": "showPlaylist",
+            "controller": "demo",
+            "match": ":^/Playlist/Add$:"
+        },
+        {
             "action": "indexAction",
             "controller": "upload",
             "match": ":^/AddMusic$:"

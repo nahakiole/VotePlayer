@@ -12,7 +12,7 @@
           href="{{ offset }}/View/Assets/css/bootstrap.min.css">
     <link href="{{ offset }}/View/Assets/css/font-awesome.css"
           rel="stylesheet">
-    <link rel="stylesheet" href="{{ offset }}/View/Assets/css/main.css">
+    <link rel="stylesheet" href="{{ offset }}{{ "/View/Assets/css/main.css"|minifycss }}">
     <script>
         window.fredyframework = {};
         window.fredyframework.offset = '{{ offset }}';

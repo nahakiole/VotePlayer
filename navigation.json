@@ -1,11 +1,6 @@
 {
     "navigation": [
         {
-            "text": "<i class='fa fa-home'></i>  Home",
-            "url": "/Home",
-            "active_class": "active"
-        },
-        {
             "text": "<i class='fa fa-align-justify'></i> Playlist",
             "url": "/Playlist",
             "active_class": "active"
